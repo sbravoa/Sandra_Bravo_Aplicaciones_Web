@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sani Papel Creativo</title>
+  
+  <!-- Ícono personalizado en el navegador -->
+  <link rel="icon" href="Icono.ico">
+
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Estilos de Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+  <!-- Scripts de Bootstrap para Dropdown menu-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+</head>
+
+
+<body>
+
+  <!-- Barra de navegación personalizada -->
+  <nav>
+    <div style="text-align:center;">
+      <a class="navbar-brand" href="#">SANI PAPEL CREATIVO</a>
+    </div>
+  </nav>
+  
+  <!-- Dropdown de Bootstrap -->
+  <div class="dropdown ml-auto">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+      Papeleria Creativa
+      <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Ver todo</a></li>
+      <li><a class="dropdown-item" href="#">Project Life</a></li>
+      <li><a class="dropdown-item" href="#">Layouts</a></li>
+    </ul>
+  </div>
+  
+  <!-- Contenido principal -->
+  <section class="section1" style="text-align: center;">
+    <h1 style="margin: 20px 0;">Bienvenido a mi página</h1>
+    <h3>de Digital Scrapbook.</h3>
+    <p> Que es un método a través del cual se plasman recuerdos, emociones o acontecimientos importantes. 
+    Se utilizan fotografías y se decoran con ayuda de papeles estampados, cintas, cartulinas, washi tape,
+    sellos y todo tipo de adornos. La traducción literal del término "Scrapbook" significa "libro de recortes", 
+     aunque también puede tomar la forma de un álbum, una tarjeta o una lámina. </p>
+  </section>
+
+
+
+  <!-- Imágenes 2 circulares y redondeadas Bootstrap  
+       Intente que las imagenes quedaran centradas en la pagina usando el text-center sin el borde mt-4 y con el borde
+       pero de ninguna forma me quedaba centrado por lo que queda al abrir la pagina completa corrido hacia la izq. -->
+
+  <div class="contenedor mt-4">
+    <div class="row">
+      <div class="col-md-2">
+        <img class="img-thumbnail rounded-circle" src="img1.jpg" alt="Imagen 1">
+      </div>
+      <div class="col-md-2">
+        <img class="img-thumbnail rounded"  src="img2.jpg" alt="Imagen 2">
+      </div>
+      <div class="col-md-2">
+        <img class="img-thumbnail rounded" src="img3.jpg" alt="Imagen 3">
+      </div>
+      <div class="col-md-2">
+        <img class="img-thumbnail rounded"  src="img4.jpg" alt="Imagen 4">
+      </div>
+      <div class="col-md-2">
+        <img class="img-thumbnail rounded-circle"  src="img5.jpg" alt="Imagen 5">
+      </div>
+    </div>
+</div>
+
+  <!-- Seccion llamada ul con color de fondo personalizado en CSS -->
+  <ul class="mt-4">
+    <h2>Teams Creativos</h2>
+    <h4>He participado en varios Team Creativos, Con Dunia Designs, Designed by Soco y Rachel Etrog</h4>
+  </ul>
+
+  <!-- Carousel de Bootstrap
+       Las imagenes del Carusel me quedaban de distintos tamaños hasta que encontre la class d-block que me las formateo
+       todas del mismo tamaño aunque encuentro se ven demaciado grandes. -->
+
+  <div id="myCarousel" class="carousel slide mt-4" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="slide1.jpg" class="d-block w-100" alt="Slide 1">
+      </div>
+      <div class="carousel-item">
+        <img src="slide2.jpg" class="d-block w-100" alt="Slide 2">
+      </div>
+      <div class="carousel-item">
+        <img src="slide3.jpg" class="d-block w-100" alt="Slide 3">
+      </div>
+      <div class="carousel-item">
+        <img src="slide4.jpg" class="d-block w-100" alt="Slide 4">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <!-- Footer personalizado -->
+  <footer>
+      <div style="text-align:center;">
+        <p>Sandra Bravo | Sani Papel Creativo</p>
+      </div>
+  </footer>
+
+
+  <!-- Script personalizado de Bienvenida-->
+ <script>
+    window.onload = function() {
+      alert('Bienvenido a la página');
+
+      var username = prompt('Ingresa tu nombre de usuario');
+      if (username) {
+        alert('Que tengas una linda experiencia, ' + username);
+      }
+    };
+  </script> 
+
+</body>
+</html>
