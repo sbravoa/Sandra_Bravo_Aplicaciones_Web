@@ -1,52 +1,18 @@
-img{
-    display: block;
-    margin: 0;
-}
-
 nav{
     background-color: #C0A9BD;
-    font-family: cursive;
-    font-style: oblique;
 }  
 
-nav a {
-    color:white;
+main{
+    color:#64766A;
+    background-color:  #F4F2F4;
 }
 
 section{
-    color:#64766A;
-    background-color:  #F4F2F4;
-    font-size: large;
-    font-family: cursive;
-    font-style: oblique;
-}
-button {
-
-    color: whitesmoke;
-    background-color:  #64766A;
-    font-size: large;
-    font-family: cursive;
-    font-style: oblique;
-}
-span {
-    color: whitesmoke;
-    background-color:  #64766A;
-    font-size: large;
-    font-family: cursive;
-    font-style: oblique;
-}
-ul{
     color:whitesmoke;
     background-color: #94A7AE;
-    font-size: large;
-    font-family: cursive;
-    font-style: oblique;
 }
 
 footer{
     color:white;
     background-color: #C0A9BD;
-    font-size: large;
-    font-family: cursive;
-    font-style: oblique;
 }
