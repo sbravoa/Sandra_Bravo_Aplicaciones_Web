@@ -13,40 +13,40 @@
     
     <body>
     <!-- Barra de navegación personalizada -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand mx-auto" href="#">SANI PAPEL CREATIVO</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="fibonacci.php">Fibonacci</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cuento.php">Cuento</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Papeleria Creativa
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Ver todo</a></li>
-                            <li><a class="dropdown-item" href="#">Project Life</a></li>
-                            <li><a class="dropdown-item" href="#">Layouts</a></li>
-                        </ul>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand mx-auto" href="#">SANI PAPEL CREATIVO</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="fibonacci.php">Fibonacci</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cuento.php">Cuento</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Papeleria Creativa
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">Ver todo</a></li>
+                                <li><a class="dropdown-item" href="#">Project Life</a></li>
+                                <li><a class="dropdown-item" href="#">Layouts</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
   
-  <!-- Contenido principal -->
+        <!-- Contenido principal -->
         <main class="section1" style="text-align: center;">
             <h1 style="margin: 20px 0;">Bienvenido a mi página</h1>
             <h3>de Digital Scrapbook.</h3>
@@ -56,7 +56,7 @@
             aunque también puede tomar la forma de un álbum, una tarjeta o una lámina. </p>
         </main>
 
-  <!-- Imágenes 2 circulares y redondeadas -->
+        <!-- Imágenes 2 circulares y redondeadas -->
        <div style="text-align: center;">
             <?php
                 $directorio = "./media/*.jpg";
@@ -68,55 +68,52 @@
                 }
             ?>
         </div>
-        
-  <!-- Seccion llamada ul con color de fondo personalizado en CSS -->
-        <section class="mt-4">
-            <?php
-            $titulo = "Teams Creativos";
-            $descripcion = "He participado en varios Team Creativos, Con Dunia Designs, Designed by Soco y Rachel Etrog";
-            ?>
-
-            <h2><?php echo $titulo; ?></h2>
-            <h4><?php echo $descripcion; ?></h4>
-            </section>
        
- 
-  <!-- Carousel de Bootstrap
-       Las imagenes del Carusel me quedaban de distintos tamaños hasta que encontre la class d-block que me las formateo
-       todas del mismo tamaño aunque encuentro se ven demaciado grandes. -->
+        <div class="container">
+            <?php
+                // Obtener los datos enviados por el formulario
+                $nombre = $_POST['nombre'];
+                $edad = $_POST['edad'];
+                $interes = isset($_POST['interes']);
 
-        <div id="myCarousel" class="carousel slide mt-4" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-                <li data-target="#myCarousel" data-slide-to="3"></li>
-            </ol>
-            <div class="carousel-inner">
-                <?php
-                $directorio = "./Slides/*.jpg";
-                $imagenes = glob($directorio);
-                $totalImagenes = count($imagenes);
+                // Mostrar información según la edad del usuario
+                if ($edad < 18) {
+                    echo '<h1>Bienvenido/a, ' . $nombre . ' (menor de edad)</h1>';
+                    echo '<p>Aquí va la información para menores de edad.</p>';
+                } else {
+                    echo '<h1>Bienvenido/a, ' . $nombre . ' (mayor de edad)</h1>';
+                    echo '<p>Aquí va la información para mayores de edad.</p>';
+                    // Seccion llamada ul con color de fondo personalizado en CSS
+                    echo '<section class="mt-4">';
+                        echo '<h2>Teams Creativos</h2>';
+                        echo '<h4>He participado en varios Team Creativos, Con Dunia Designs, Designed by Soco y Rachel Etrog</h4>';
+                    echo '</section>';
 
-                foreach ($imagenes as $indice => $imagen) {
-                    $activeClass = ($indice === 0) ? 'active' : '';
-                    echo '<div class="carousel-item ' . $activeClass . '">';
-                    echo '<img src="' . $imagen . '" class="d-block w-100" alt="Slide ' . ($indice + 1) . '">';
-                    echo '</div>';
                 }
-                ?>
-            </div>
-            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+
+                // Mostrar el banner de información si el usuario marcó el check
+                // carousel de Bootstrap
+                if ($interes) {
+                    echo '<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">';
+                        echo '<div class="carousel-inner">';
+                        
+                            $directorio = "./Slides/*.jpg";
+                            $images = glob($directorio);
+
+                            foreach ($images as $index => $image) {
+                                $activeClass = ($index == 0) ? 'active' : ''; // Agrega la clase 'active' a la primera imagen
+                            
+                            echo '<div class="carousel-item ' . $activeClass . '">';
+                                echo '<img src="' . $image . '" class="d-block w-100" alt="Slide ' . ($index + 1) . '">';
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+                    }
+                    ;
+                }
+            ?>
         </div>
 
- 
         <!-- Footer personalizado -->
         <footer>
             <div style="text-align:center;" >

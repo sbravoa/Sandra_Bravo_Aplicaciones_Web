@@ -59,25 +59,27 @@ $interes = isset($_POST['interes']) ? $_POST['interes'] : '';
 
   
         <!-- Contenido principal -->
-        <?php
-        echo '<h1 style="margin-left: 20px;">Bienvenido(a) a la Página de Inicio</h1>';
-        ?>
 
-
-        <form action="index.php" method="POST" style="margin-left: 20px;">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" value="<?php echo $nombre; ?>" required><br><br>
-
-            <label for="edad">Edad:</label>
-            <input type="number" id="edad" name="edad" value="<?php echo $edad; ?>" required><br><br>
-
-            <label for="interes">¿Estás interesado(a) en la información de la página?</label>
-            <input type="checkbox" id="interes" name="interes" value="si" 
-            <?php if ($interes === 'si') { echo 'checked'; } ?>><br><br>
-
-            <input type="submit" value="Enviar">
-        </form>
-
+        <div class="container">
+            <?php
+            echo '<h1 style="margin-left: 20px;">Bienvenido(a) a la Página de Inicio</h1>';
+            ?>
+            <form action="Index.php" method="POST">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="edad" class="form-label">Edad:</label>
+                    <input type="number" class="form-control" id="edad" name="edad" required>
+                </div>
+                <div class="mb-3">
+                    <label for="interes" class="form-label">Estoy interesado/a en la información de la página:</label>
+                    <input type="checkbox" id="interes" name="interes">
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
         <!-- Footer personalizado -->
         <footer>
             <div style="text-align:center;" >
