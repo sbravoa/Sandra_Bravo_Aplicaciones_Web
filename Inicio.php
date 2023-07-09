@@ -34,7 +34,7 @@ $interes = isset($_POST['interes']) ? $_POST['interes'] : '';
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="Index.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="Inicio.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="fibonacci.php">Fibonacci</a>
@@ -62,7 +62,7 @@ $interes = isset($_POST['interes']) ? $_POST['interes'] : '';
 
         <div class="container">
             <?php
-            echo '<h1 style="margin-left: 20px;">Bienvenido(a) a la Página de Inicio</h1>';
+            echo '<h1 style="margin-left: 20px;">Bienvenido a la Página de Inicio de Sani</h1>';
             ?>
             <form action="Index.php" method="POST">
                 <div class="mb-3">
@@ -77,7 +77,7 @@ $interes = isset($_POST['interes']) ? $_POST['interes'] : '';
                     <label for="interes" class="form-label">Estoy interesado/a en la información de la página:</label>
                     <input type="checkbox" id="interes" name="interes">
                 </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-secondary">Enviar</button>
             </form>
         </div>
         <!-- Footer personalizado -->

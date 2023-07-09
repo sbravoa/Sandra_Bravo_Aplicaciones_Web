@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="Index.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="Inicio.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="fibonacci.php">Fibonacci</a>
@@ -53,28 +53,28 @@
 
   
         <!-- Contenido principal -->
+    <div class="container" style="text-align:center;">
         <?php
-            $titulo = "Mi Cuento";
-            $imagenSrc = "imagen.jpg";
+            $titulo = "Acerca de Mi";
+            $imagenSrc = "Cuento.jpg";
             $imagenAlt = "Imagen del cuento";
             $parrafos = [
-                "Había una vez en un lejano bosque...",
-                "Érase una vez un pequeño ratón llamado Tomás...",
-                "Y así, Tomás vivió muchas aventuras...",
-                "Fin del cuento."
+                "¡Hola! Soy una Chilena viviendo en Panamá, y me siento muy afortunada de ser la madre de dos hijos maravillosos. Además de ser madre, me apasiona la creatividad en todas sus formas. ",
+                "Soy una Memory Keeper y una Digital Scrapper, lo que significa que me encanta capturar y preservar los momentos más especiales de la vida a través de fotografías y diseño digital. Para mí, la creatividad es una forma de expresión y una manera de conectar con los demás. Siempre estoy buscando nuevas formas de aprender y crecer, y me emociona descubrir cosas nuevas cada día. En resumen, soy una apasionada de la creatividad y el aprendizaje continuo.",
             ];
         ?>
 
         <?php 
-            echo "<h1 class='texto-cuento'>$titulo; </h1>"
+            echo "<h1 class='texto-cuento'>$titulo</h1>"
         ?>
-        <img src="<?php echo $imagenSrc; ?>" alt="<?php echo $imagenAlt; ?>">
-            
+                  
         <?php
             foreach ($parrafos as $parrafo) {
                 echo "<p class='texto-cuento'>$parrafo</p>";
             }
         ?>
+         <img src="<?php echo $imagenSrc; ?>" alt="<?php echo $imagenAlt; ?>">
+    </div>
 
         <!-- Footer personalizado -->
         <footer>
