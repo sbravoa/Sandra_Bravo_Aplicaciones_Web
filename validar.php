@@ -1,20 +1,17 @@
 <?php
-
     $usuario=$_POST["inputUser"];
     $password=$_POST["inputPassword"];
-
     session_start();
     $_SESSION["inputUser"]=$usuario;
 
-    include("db.php");
+    $conexion=mysqli_connect("localhost","root","","usuarios");
+
     $consulta="SELECT* FROM usuarios WHERE usuario='$usuario' and password='$password'";
     $resultado=mysqli_query($conexion,$consulta);
 
     $filas=mysqli_num_rows($resultado);
     if ($filas){
-        header("location:index.php");
-
-    
+        header("location:index.php");    
     } else {
         header("location:login.php?error=1");
     }

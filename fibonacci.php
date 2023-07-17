@@ -7,7 +7,7 @@
  
     <!-- Scripts de Bootstrap para Dropdown menu-->
     <link rel="stylesheet" href="css/style.css">
-    <title>Fibonacci</title> 
+    <title>Fibonacci - Sani Papel Creativo</title> 
     
    </head>
     
@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                 <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="Inicio.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="Index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="fibonacci.php">Fibonacci</a>

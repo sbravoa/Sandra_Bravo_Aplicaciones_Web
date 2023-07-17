@@ -87,7 +87,21 @@
                 <!-- Mensaje de error contraseñas no coinciden -->
                 <?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
                   <div class="alert alert-danger" role="alert">
-                  Las contraseñas no coinciden. Por favor, inténtalo de nuevo.
+                    Las contraseñas no coinciden. Por favor, inténtalo de nuevo.
+                  </div>
+                <?php endif; ?>
+
+                <!-- Mensaje de error el usuario ya existe -->
+                <?php if (isset($_GET['error']) && $_GET['error'] == 2): ?>
+                  <div class="alert alert-danger" role="alert">
+                    El usuario ya existe. Por favor, inténtalo de nuevo.
+                  </div>
+                <?php endif; ?>
+
+                <!-- Mensaje de error en registro -->
+                <?php if (isset($_GET['error']) && $_GET['error'] == 3): ?>
+                  <div class="alert alert-danger" role="alert">
+                  Ocurrió un error al insertar el usuario. Por favor, inténtalo de nuevo.
                   </div>
                 <?php endif; ?>
 

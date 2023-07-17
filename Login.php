@@ -36,6 +36,12 @@
                 <img class="text-center" src="Icono/icono.ico" alt="" width="50" height="50">
                 <h2 class="fw-bold text-center py-5">Bienvenido</h2>
               </div>
+              <!-- Mensaje de registro correcto -->
+              <?php if (isset($_GET['registro']) && $_GET['registro'] == "success"): ?>
+                <div class="alert alert-danger" role="alert">
+                El usuario se ha registrado exitosamente
+                </div>
+              <?php endif; ?>
                   
             <!-- Login -->
 
@@ -44,12 +50,12 @@
                 <!-- Usuario -->
                 <div class="mb-3">
                   <label for="inputUser" class="sr-only">Usuario</label>
-                  <input type="text" id="inputUser" class="form-control" placeholder="Usuario" required autofocus>
+                  <input type="text" name="inputUser" class="form-control" placeholder="Usuario" required autofocus>
                 </div>
                 <!-- Contraseña -->
                 <label for="inputPassword" class="sr-only">Contraseña</label>
                 <div class="input-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+                  <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Contraseña" required>
                   <!-- Se agrega boton ojo para ver la contraseña escrita -->
                   <button class="btn btn-outline-secondary" type="button" id="togglePassword">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
