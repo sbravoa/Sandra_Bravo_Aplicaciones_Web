@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
  
     <!-- Scripts de Bootstrap para Dropdown menu-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Cuento</title> 
 
     <style>
@@ -56,7 +56,7 @@
     <div class="container" style="text-align:center;">
         <?php
             $titulo = "Acerca de Mi";
-            $imagenSrc = "Cuento.jpg";
+            $imagenSrc = "Img/Cuento.jpg";
             $imagenAlt = "Imagen del cuento";
             $parrafos = [
                 "¡Hola! Soy una Chilena viviendo en Panamá, y me siento muy afortunada de ser la madre de dos hijos maravillosos. Además de ser madre, me apasiona la creatividad en todas sus formas. ",

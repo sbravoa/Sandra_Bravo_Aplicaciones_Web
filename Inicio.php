@@ -12,7 +12,7 @@ $interes = isset($_POST['interes']) ? $_POST['interes'] : '';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
  
     <!-- Scripts de Bootstrap para Dropdown menu-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Pagina de Inicio</title> 
 
     <style>
@@ -60,9 +60,9 @@ $interes = isset($_POST['interes']) ? $_POST['interes'] : '';
   
         <!-- Contenido principal -->
 
-        <div class="container">
+        <div class="container w-50">
             <?php
-            echo '<h1 style="margin-left: 20px;">Bienvenido a la Página de Inicio de Sani</h1>';
+            echo '<h2 style="margin-left: 20px;">Bienvenido a la Página de Inicio de Sani</h2>';
             ?>
             <form action="Index.php" method="POST">
                 <div class="mb-3">
