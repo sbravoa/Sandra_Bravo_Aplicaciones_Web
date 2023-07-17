@@ -33,20 +33,21 @@
         <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded"></div>
           <div class="col bg-white p-5">
               <div class="text-center">
-                <img class="text-center" src="Icono/icono.ico" alt="" width="72" height="72">
+                <img class="text-center" src="Icono/icono.ico" alt="" width="50" height="50">
                 <h2 class="fw-bold text-center py-5">Bienvenido</h2>
               </div>
                   
             <!-- Login -->
 
-            <form method="Post" action="">
-              <div class="mb-4 text-center">
+            <form method="post" action="validar.php">
+              <div class="mb-2 text-center">
                 <!-- Usuario -->
                 <div class="mb-3">
                   <label for="inputUser" class="sr-only">Usuario</label>
                   <input type="text" id="inputUser" class="form-control" placeholder="Usuario" required autofocus>
                 </div>
-              <label for="inputPassword" class="sr-only">Contraseña</label>
+                <!-- Contraseña -->
+                <label for="inputPassword" class="sr-only">Contraseña</label>
                 <div class="input-group">
                   <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
                   <!-- Se agrega boton ojo para ver la contraseña escrita -->
@@ -58,6 +59,13 @@
                 </button>
                 </div>
               </div>
+                <!-- Mensaje de usuario o contraseña incorrectos -->
+              <?php if (isset($_GET['error'])): ?>
+                <div class="alert alert-danger" role="alert">
+                  Usuario o Contraseña incorrectos
+                </div>
+              <?php endif; ?>
+
               <!-- Check Box para recordar inicio de Sesion -->
               <div class="checkbox mb-3">
                 <label>
@@ -69,7 +77,7 @@
 
               <!-- Registro de usuario que cargara los datos en base de datos  -->
               <div class="my-3">
-                <span>No tienes cuenta? <a href="#">Regístrate</a></span><br>
+                <span>No tienes cuenta? <a href="registro.php">Regístrate</a></span><br>
                 <!-- Se deja a futuro recuperaciond de contraseña
                     <span><a href="#">Recuperar contraseña</a></span>-->
               </div>
