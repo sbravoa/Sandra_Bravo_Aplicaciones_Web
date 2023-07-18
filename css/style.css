@@ -17,3 +17,30 @@ footer{
     color:white;
     background-color: #C0A9BD;
 }
+
+.noticia {
+    margin-bottom: 20px;
+}
+
+.noticia img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.noticia h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.noticia p {
+    margin-bottom: 10px;
+}
+
+.noticia .fecha {
+    font-style: italic;
+    color: gray;
+}
+.espacio {
+    margin-bottom: 40px;
+}

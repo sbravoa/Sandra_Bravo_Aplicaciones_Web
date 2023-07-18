@@ -38,7 +38,7 @@
               </div>
               <!-- Mensaje de registro correcto -->
               <?php if (isset($_GET['registro']) && $_GET['registro'] == "success"): ?>
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-success" role="alert">
                 El usuario se ha registrado exitosamente
                 </div>
               <?php endif; ?>

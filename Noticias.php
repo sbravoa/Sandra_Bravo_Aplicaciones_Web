@@ -3,22 +3,11 @@
     <head>
 
    <!-- Estilos de Bootstrap -->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
  
- <!-- Scripts de Bootstrap para Dropdown menu-->
- <link rel="stylesheet" href="css/style.css">
-    <title>Cuento - Sani Papel Creativo</title> 
-
-    <style>
-        .texto-cuento {
-            margin-left: 20px;
-        }
-        .bg{
-          background-image: url(Img/img1.jpg);
-          background-position: center center;
-         }
-    </style>
-    
+    <!-- Scripts de Bootstrap para Dropdown menu-->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Noticias- Sani Papel Creativo</title> 
    </head>
     
     <body>
@@ -35,7 +24,7 @@
                         <a class="nav-link active" aria-current="page" href="Index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                       <a class="nav-link" href="Noticias.php">Noticias</a>
+                        <a class="nav-link" href="Noticias.php">Noticias</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,6 +35,12 @@
                             <li><a class="dropdown-item" href="cuento.php">Cuento</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Nombre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Salir.php">Salir</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -53,90 +48,60 @@
 
   
         <!-- Contenido principal -->
-        <div class="container w-75 bg-light">
-      <div class="row align-items-stretch">
+        <div class="container mt-5">
+        <h2 class="text-center mb-4">Noticias</h2>
+        <!-- Mensaje de registro correcto -->
+        <?php if (isset($_GET['crear']) && $_GET['crear'] == "success"): ?>
+            <div class="alert alert-success" role="alert">
+                La noticia se ha generado exitosamente
+            </div>
+        <?php endif; ?>
         <?php
             // Realizar la conexión a la base de datos
-            $conexion=mysqli_connect("localhost","root","","usuarios");
+            include("db.php");
+
+            if (!$conexion) {
+                die("Error al conectar a la base de datos: " . mysqli_connect_error());
+            }
 
             // Consulta de noticias ordenadas por fecha de publicación
-            $consulta = "SELECT * FROM noticias ORDER BY fecha_publicacion DESC";
+            $consulta = "SELECT `id`, `titulo`, `contenido`, `imagen`, `fecha_publicacion` FROM `noticias` ORDER BY `fecha_publicacion` DESC";
             $resultado = mysqli_query($conexion, $consulta);
-            
-            // Verificar si hay noticias disponibles
+            if (!$resultado) {
+                die("Error al obtener las noticias: " . mysqli_error($conexion));
+            }
+
+            // Mostrar las noticias
             if (mysqli_num_rows($resultado) > 0) {
                 while ($fila = mysqli_fetch_assoc($resultado)) {
-                  $titulo = $fila['titulo'];
-                  $imagen = $fila['imagen'];
-                  $descripcion = $fila['descripcion'];
+                    $titulo = $fila['titulo'];
+                    $contenido = $fila['contenido'];
+                    $imagen = $fila['imagen'];
+                    $fecha_publicacion = $fila['fecha_publicacion'];
 
-                  // Mostrar cada noticia con su imagen
-                  echo '
-                    <div class="card mb-3">
-                      <div class="row g-0">
-                        <div class="col-md-4">
-                          <img src="'.$imagen.'" class="img-fluid rounded-start" alt="Noticia">
+                    echo '
+                    <div class="card noticia">
+                        <img src="'.$imagen.'" class="card-img-top" alt="Imagen de la noticia">
+                        <div class="card-body">
+                            <h3 class="card-title">'.$titulo.'</h3>
+                            <p class="card-text">'.$contenido.'</p>
+                            <p class="fecha">'.$fecha_publicacion.'</p>
                         </div>
-                        <div class="col-md-8">
-                          <div class="card-body">
-                            <h5 class="card-title">'.$titulo.'</h5>
-                            <p class="card-text">'.$descripcion.'</p>
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                  ';
+                    ';
                 }
-              } else {
-                // No hay noticias disponibles
+            } else {
                 echo '<p>No hay noticias disponibles</p>';
-              }
+            }
 
-              mysqli_close($conexion);
-            ?>
-
-            <?php
-          // Obtener los datos de la noticia
-          $titulo = $noticia['titulo'];
-          $imagen = $noticia['imagen'];
-          $contenido = $noticia['contenido'];
-
-          // Mostrar la imagen de la noticia en la columna de la izquierda
-          echo '
-            <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded" style="background-image: url('.$imagen.');">
-            </div>
-          ';
-
-          // Mostrar los detalles de la noticia en la columna de la derecha
-          echo '
-            <div class="col bg-white p-5">
-              <div class="text-center">
-                <h2 class="fw-bold text-center py-5">Noticias</h2>
-              </div>
-              <div class="card mb-3">
-                <div class="row g-0">
-                  <div class="col-md-12">
-                    <img src="'.$imagen.'" class="img-fluid rounded-start" alt="Noticia">
-                  </div>
-                  <div class="col-md-12">
-                    <div class="card-body">
-                      <h5 class="card-title">'.$titulo.'</h5>
-                      <p class="card-text">'.$contenido.'</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="text-center">
-                <a href="administrar_noticias.php" class="btn btn-primary">Administrar Noticias</a>
-              </div>
-            </div>
-          ';
-
-          mysqli_close($conexion);
+            mysqli_close($conexion);
         ?>
-      </div>
+        <!-- Botón para administrar las noticias -->
+        <div class="text-center mt-4">
+           <a href="crear_noticia.php" class="btn btn-secondary">Administrar Noticias</a>
+        </div>
+        <div class="espacio"></div>
     </div>
-
         <!-- Footer personalizado -->
         <footer>
             <div style="text-align:center;" >
@@ -144,9 +109,11 @@
             </div>
         </footer>
 
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     </body>
     
 </html>
+
+

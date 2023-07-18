@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// Obtener los datos enviados desde el login
+$nombre = isset($_SESSION['inputUser']) ? $_SESSION['inputUser'] : '';
+$edad = isset($_SESSION['edad']) ? $_SESSION['edad'] : 0;
+$interes = isset($_SESSION['interes']) ? $_SESSION['interes'] : 0;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -46,40 +55,21 @@
             </div>
         </div>
     </nav>
-            <?php
-        // Obtener los datos enviados por el formulario
-                $nombre = $_POST['nombre'];
-                $edad = $_POST['edad'];
-                $interes = isset($_POST['interes']);
-
-                // Contenido principal 
-                // Mostrar información según la edad del usuario
-                if ($edad < 18) {
-                    echo '<main class="section1" style="text-align: center;">';
-                        echo '<h1>' . $nombre . ', Bienvenido a mi página  </h1>';
-                        echo '<h3>de Digital Scrapbook.</h3>';
-                        echo '<p> Por ser menor de edad esta pagina se encuentra restringida </p>';
-                    
-                    echo '</main>';
-                } 
-                
-                
-                else {
-                    echo '<main class="section1" style="text-align: center;">';
-                        echo '<h1>' . $nombre . ', Bienvenido a mi página  </h1>';
-                        echo '<h3>de Digital Scrapbook.</h3>';
-                        echo '<p> Que es un método a través del cual se plasman recuerdos, emociones o acontecimientos importantes. 
-                        Se utilizan fotografías y se decoran con ayuda de papeles estampados, cintas, cartulinas, washi tape,
-                        sellos y todo tipo de adornos. La traducción literal del término "Scrapbook" significa "libro de recortes", 
-                        aunque también puede tomar la forma de un álbum, una tarjeta o una lámina. </p>';
-                    echo '</main>';
-                } 
-            ?>
-
-
+    <main class="section1" style="text-align: center;">
+        <h1><?php echo $nombre; ?>, Bienvenido a mi página</h1>
+        <h3>de Digital Scrapbook.</h3>
+        <?php
+        if ($edad < 18) {
+            echo '<p>Por ser menor de edad, esta página se encuentra restringida.</p>';
+        } else {
+            echo '<p>Qué es un método a través del cual se plasman recuerdos, emociones o acontecimientos importantes. Se utilizan fotografías y se decoran con ayuda de papeles estampados, cintas, cartulinas, washi tape, sellos y todo tipo de adornos. La traducción literal del término "Scrapbook" significa "libro de recortes", aunque también puede tomar la forma de un álbum, una tarjeta o una lámina.</p>';
+        }
+        ?>
+    </main>
+               
+            
         <!-- Imágenes 2 circulares y redondeadas -->
-       <div style="text-align: center;">
-                
+        <div style="text-align: center;">
             <?php
             if ($edad > 18) {
                 $directorio = "./media/*.jpg";
@@ -92,6 +82,7 @@
             }
             ?>
         </div>
+
 
             
         <section class="mt-4" style="text-align: center;">
