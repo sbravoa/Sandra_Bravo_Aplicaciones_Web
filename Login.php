@@ -36,16 +36,17 @@
                 <img class="text-center" src="Icono/icono.ico" alt="" width="50" height="50">
                 <h2 class="fw-bold text-center py-5">Bienvenido</h2>
               </div>
+
               <!-- Mensaje de registro correcto -->
               <?php if (isset($_GET['registro']) && $_GET['registro'] == "success"): ?>
                 <div class="alert alert-success" role="alert">
-                El usuario se ha registrado exitosamente
+                  El usuario se ha registrado exitosamente
                 </div>
               <?php endif; ?>
                   
             <!-- Login -->
 
-            <form method="post" action="validar.php">
+            <form method="post" action="index.php">
               <div class="mb-2 text-center">
                 <!-- Usuario -->
                 <div class="mb-3">
@@ -65,8 +66,9 @@
                 </button>
                 </div>
               </div>
+
                 <!-- Mensaje de usuario o contraseña incorrectos -->
-              <?php if (isset($_GET['error'])): ?>
+              <?php if (isset($errorLogin)): ?>
                 <div class="alert alert-danger" role="alert">
                   Usuario o Contraseña incorrectos
                 </div>
@@ -83,7 +85,7 @@
 
               <!-- Registro de usuario que cargara los datos en base de datos  -->
               <div class="my-3">
-                <span>No tienes cuenta? <a href="registro.php">Regístrate</a></span><br>
+                <span>No tienes cuenta? <a href="crear_registro.php">Regístrate</a></span><br>
                 <!-- Se deja a futuro recuperaciond de contraseña
                     <span><a href="#">Recuperar contraseña</a></span>-->
               </div>
