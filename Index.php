@@ -13,37 +13,39 @@
     
     <body>
     <!-- Barra de navegación personalizada -->
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid">
-                <a class="navbar-brand mx-auto" href="#">SANI PAPEL CREATIVO</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="Inicio.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="fibonacci.php">Fibonacci</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cuento.php">Cuento</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Papeleria Creativa
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">Ver todo</a></li>
-                                <li><a class="dropdown-item" href="#">Project Life</a></li>
-                                <li><a class="dropdown-item" href="#">Layouts</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand mx-auto" href="#">SANI PAPEL CREATIVO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="Index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Noticias.php">Noticias</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Otros
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="fibonacci.php">Fibonacci</a></li>
+                            <li><a class="dropdown-item" href="cuento.php">Cuento</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Nombre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Salir.php">Salir</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
             <?php
         // Obtener los datos enviados por el formulario
                 $nombre = $_POST['nombre'];
