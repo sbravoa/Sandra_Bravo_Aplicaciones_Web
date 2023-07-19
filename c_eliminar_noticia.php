@@ -12,11 +12,11 @@ $consultaEliminar = "DELETE FROM `noticias` WHERE id = $id";
 
 if ($conexion->query($consultaEliminar)) {
     // El usuario se ha registrado exitosamente, redirigir a la página de noticias
-    header("Location: adm_noticia.php?registro=success");
+    header("Location: adm_noticia.php?eliminar=success");
     exit;
 } else {
     // Ocurrió un error al eliminar la noticia
-    header("Location: noticias.php?error=3");
+    header("Location: noticia.php?error=3");
     exit;
 }
 

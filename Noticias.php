@@ -43,16 +43,10 @@
         </div>
     </nav>
 
-  
         <!-- Contenido principal -->
         <div class="container mt-5">
         <h2 class="text-center mb-4">Noticias</h2>
-        <!-- Mensaje de registro correcto -->
-        <?php if (isset($_GET['crear']) && $_GET['crear'] == "success"): ?>
-            <div class="alert alert-success" role="alert">
-                La noticia se ha generado exitosamente
-            </div>
-        <?php endif; ?>
+   
 
         <?php
             // Realizar la conexión a la base de datos (usando el archivo db.php)

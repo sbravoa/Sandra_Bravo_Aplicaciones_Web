@@ -35,14 +35,43 @@
         <!-- Contenido principal -->
         <div class="container mt-5">
         <h2 class="text-center mb-4">Noticias</h2>
-        <!-- Mensaje de registro correcto -->
-              <!-- Mensaje de registro correcto -->
-              <?php if (isset($_GET['registro']) && $_GET['registro'] == "success"): ?>
-                <div class="alert alert-success" role="alert">
-                    La modificacion o Eliminacion fue exitosa
-                </div>
-              <?php endif; ?>
+        <!-- Mensaje de modificacion correcta -->
+        <?php if (isset($_GET['editar']) && $_GET['editar'] == "success"): ?>
+            <div class="alert alert-success" role="alert">
+                La modificacion fue exitosa
+            </div>
+        <?php endif; ?>
+        <!-- Mensaje de eliminacion correcto -->
+        <?php if (isset($_GET['eliminar']) && $_GET['eliminar'] == "success"): ?>
+            <div class="alert alert-success" role="alert">
+                La eliminacion fue exitosa
+            </div>
+        <?php endif; ?>
+       <!-- Mensaje de creacion correcto -->
+       <?php if (isset($_GET['crear']) && $_GET['crear'] == "success"): ?>
+            <div class="alert alert-success" role="alert">
+                La noticia se ha generado exitosamente
+            </div>
+        <?php endif; ?>
 
+        <!-- Mensaje de usuario o contraseña incorrectos -->
+        <?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
+            <div class="alert alert-danger" role="alert">
+                Error en creacion de nueva noticia
+            </div>
+        <?php endif; ?>
+        <!-- Mensaje de usuario o contraseña incorrectos -->
+        <?php if (isset($_GET['error']) && $_GET['error'] == 2): ?>
+            <div class="alert alert-danger" role="alert">
+                Error en modificacion
+            </div>
+        <?php endif; ?>
+        <!-- Mensaje de usuario o contraseña incorrectos -->
+        <?php if (isset($_GET['error']) && $_GET['error'] == 3): ?>
+            <div class="alert alert-danger" role="alert">
+                Error en eliminacion 
+            </div>
+        <?php endif; ?>
         <?php
             // Realizar la conexión a la base de datos (usando el archivo db.php)
             include("includes/db.php");
@@ -75,19 +104,21 @@
                                 <div class="col-3">
                                     <img class="img-thumbnail" src="' . $imagen . '" alt="Imagen" style="width: 250px; height: 250px;">
                                 </div>
-                                <div class="col-6">
+                                <div class="col-8">
                                     <h3 class="card-title">'.$titulo.'</h3>
                                     <p class="card-text">'.$contenido.'</p>
                                 </div>
-                                <div class="col-3">
-                                    <form action="a_editar_noticia.php" method="post">
+                                <div class="col-1">
+                                    <form action="b_editar_noticia.php" method="post">
                                         <input type="hidden" name="id_editar" value=" '. $id .' ">
-                                        <button type="submit" class="btn btn-secondary">Modificar</button>
+                                        <button type="submit" class="btn btn-outline-secondary btn-sm btn-block">Modificar</button>
                                     </form>
                                     <div class="espacio"></div>
-                                    <form action="a_eliminar_noticia.php" method="post">
-                                        <input type="hidden" name="id_eliminar" value=" '. $id .' ">
-                                        <button type="submit" class="btn btn-secondary">Eliminar</button>
+                                    <form action="c_eliminar_noticia.php" method="post">
+                                        <div class="form-group col-md-1">
+                                            <input type="hidden" name="id_eliminar" value=" '. $id .' ">
+                                            <button type="submit" class="btn btn-outline-secondary btn-sm btn-block">Eliminar</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -102,6 +133,7 @@
             // Cerrar la conexión a la base de datos
             $conexion = null;
             ?>
+            <div class="espacio"></div>
     </div>
         <!-- Footer personalizado -->
         <footer>

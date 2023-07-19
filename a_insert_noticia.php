@@ -1,6 +1,5 @@
 <?php
 // Obtener los datos del formulario
-$id_noticia = $_POST['id_noticia'];
 $titulo = $_POST['inputtitulo'];
 $contenido = $_POST['inputcontenido'];
 $imagen = $_POST['inputimagen'];
@@ -12,15 +11,16 @@ $db = new DB();
 $conexion = $db->connect();
 
 // Insertar el nuevo usuario en la base de datos
-$consultaActualizar = "UPDATE noticias SET titulo = '$titulo', contenido = '$contenido', imagen = '$imagen' WHERE id = '$id_noticia'";
+$consultaInsertar = "INSERT INTO `noticias` (`titulo`, `contenido`, `imagen`, `fecha_publicacion`) 
+                                    VALUES ('$titulo', '$contenido', '$imagen',CURRENT_TIMESTAMP)";
 
-if ($conexion->query($consultaActualizar)) {
+if ($conexion->query($consultaInsertar)) {
     // El usuario se ha registrado exitosamente, redirigir a la página de inicio de sesión
-    header("Location:adm_noticia.php?registro=success");
+    header("Location: adm_noticia.php?crear=success");
     exit;
 } else {
-    // Ocurrió un error al insertar el usuario, redirigir de vuelta al formulario de registro con mensaje de error
-    header("Location:noticias.php?error=1");
+    // Ocurrió un error 
+    header("Location: adm_noticia.php?error=1");
     exit;
 }
 

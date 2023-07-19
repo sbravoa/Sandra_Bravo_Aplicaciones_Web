@@ -34,7 +34,7 @@
 
       <!-- Registro de Noticia -->
       <div class="col-12">
-        <form method="post" action="guardar_noticia.php">
+        <form method="post" action="a_insert_noticia.php">
           <div class="mb-3">
             <label for="inputtitulo" class="form-label">Título</label>
             <input type="text" name="inputtitulo" class="form-control" placeholder="Título" required autofocus>
@@ -51,9 +51,9 @@
           </div>
 
           <?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
-            <div class="alert alert-danger" role="alert">
-              Ocurrió un error al insertar la noticia. Por favor, inténtalo de nuevo.
-            </div>
+              <div class="alert alert-danger" role="alert">
+                Ocurrió un error al insertar la noticia. Por favor, inténtalo de nuevo.
+              </div>
           <?php endif; ?>
 
           <div class="mb-3">

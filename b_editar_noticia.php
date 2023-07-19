@@ -58,7 +58,7 @@
 
                     // Mostrar el formulario de edición de la noticia
                     echo '
-                    <form action="guardar_edit_noticia.php" method="post">
+                    <form action="b_insert_noticia.php" method="post">
                         <input type="hidden" name="id_noticia" value="'.$id_noticia.'">
                         <div class="mb-3">
                             <label for="titulo" class="form-label">Título</label>

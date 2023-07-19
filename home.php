@@ -71,7 +71,7 @@
                 $contenido2 = $fila['contenido2'];
                 $contenido3 = $fila['contenido3'];
                 $contenido4 = $fila['contenido4'];
-                $contenido5 = $fila['contenido4'];
+                $contenido5 = $fila['contenido5'];
             }
         ?>
 
