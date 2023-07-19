@@ -21,19 +21,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="Index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Noticias.php">Noticias</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Otros
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="fibonacci.php">Fibonacci</a></li>
-                            <li><a class="dropdown-item" href="cuento.php">Cuento</a></li>
-                        </ul>
+                        <a class="nav-link" href="a_crear_noticia.php">Nueva noticia</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/includes/logout.php">Salir</a>
@@ -48,11 +36,12 @@
         <div class="container mt-5">
         <h2 class="text-center mb-4">Noticias</h2>
         <!-- Mensaje de registro correcto -->
-        <?php if (isset($_GET['crear']) && $_GET['crear'] == "success"): ?>
-            <div class="alert alert-success" role="alert">
-                La noticia se ha generado exitosamente
-            </div>
-        <?php endif; ?>
+              <!-- Mensaje de registro correcto -->
+              <?php if (isset($_GET['registro']) && $_GET['registro'] == "success"): ?>
+                <div class="alert alert-success" role="alert">
+                    La modificacion o Eliminacion fue exitosa
+                </div>
+              <?php endif; ?>
 
         <?php
             // Realizar la conexión a la base de datos (usando el archivo db.php)
@@ -73,18 +62,35 @@
             // Mostrar las noticias
             if ($resultado->rowCount() > 0) {
                 while ($fila = $resultado->fetch()) {
+                    $id = $fila['id'];
                     $titulo = $fila['titulo'];
                     $contenido = $fila['contenido'];
                     $imagen = $fila['imagen'];
                     $fecha_publicacion = $fila['fecha_publicacion'];
 
                     echo '
-                    <div class="card noticia">
-                        <img src="'.$imagen.'" class="card-img-top" alt="Imagen de la noticia">
+                    <div class="card noticia-sm">
                         <div class="card-body">
-                            <h3 class="card-title">'.$titulo.'</h3>
-                            <p class="card-text">'.$contenido.'</p>
-                            <p class="fecha">'.$fecha_publicacion.'</p>
+                            <div class="row">
+                                <div class="col-3">
+                                    <img class="img-thumbnail" src="' . $imagen . '" alt="Imagen" style="width: 250px; height: 250px;">
+                                </div>
+                                <div class="col-6">
+                                    <h3 class="card-title">'.$titulo.'</h3>
+                                    <p class="card-text">'.$contenido.'</p>
+                                </div>
+                                <div class="col-3">
+                                    <form action="a_editar_noticia.php" method="post">
+                                        <input type="hidden" name="id_editar" value=" '. $id .' ">
+                                        <button type="submit" class="btn btn-secondary">Modificar</button>
+                                    </form>
+                                    <div class="espacio"></div>
+                                    <form action="a_eliminar_noticia.php" method="post">
+                                        <input type="hidden" name="id_eliminar" value=" '. $id .' ">
+                                        <button type="submit" class="btn btn-secondary">Eliminar</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     ';
@@ -96,12 +102,6 @@
             // Cerrar la conexión a la base de datos
             $conexion = null;
             ?>
-
-        <!-- Botón para administrar las noticias -->
-        <div class="text-center mt-4">
-           <a href="adm_noticia.php" class="btn btn-secondary">Administrar Noticias</a>
-        </div>
-        <div class="espacio"></div>
     </div>
         <!-- Footer personalizado -->
         <footer>

@@ -43,9 +43,6 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" ><?php echo $user->getNombre();  ?></a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/includes/logout.php">Cerrar sesión</a>
                     </li>
                 </ul>
@@ -53,7 +50,6 @@
         </div>
     </nav>
 
-  
         <!-- Contenido principal -->
     <div class="container" style="text-align:center;">
         <?php

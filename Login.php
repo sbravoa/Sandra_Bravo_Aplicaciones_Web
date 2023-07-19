@@ -85,7 +85,7 @@
 
               <!-- Registro de usuario que cargara los datos en base de datos  -->
               <div class="my-3">
-                <span>No tienes cuenta? <a href="crear_registro.php">Regístrate</a></span><br>
+                <span>No tienes cuenta? <a href="crear_usuario.php">Regístrate</a></span><br>
                 <!-- Se deja a futuro recuperaciond de contraseña
                     <span><a href="#">Recuperar contraseña</a></span>-->
               </div>

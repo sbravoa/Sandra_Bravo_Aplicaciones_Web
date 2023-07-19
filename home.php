@@ -12,59 +12,88 @@
    </head>
     
     <body>
-    <!-- Barra de navegación personalizada -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand mx-auto" href="#">SANI PAPEL CREATIVO</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="Index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Noticias.php">Noticias</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Otros
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="fibonacci.php">Fibonacci</a></li>
-                            <li><a class="dropdown-item" href="cuento.php">Cuento</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ><?php echo $user->getNombre();  ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/includes/logout.php">Cerrar sesión</a>
-                    </li>
-                </ul>
+        <!-- Barra de navegación personalizada -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand mx-auto" href="#">SANI PAPEL CREATIVO</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="Index.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Noticias.php">Noticias</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Otros
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="fibonacci.php">Fibonacci</a></li>
+                                <li><a class="dropdown-item" href="cuento.php">Cuento</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/includes/logout.php">Cerrar sesión</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    <main class="section1" style="text-align: center;">
-        <h1><?php echo $user->getNombre();  ?>, Bienvenido a mi página</h1>
-        <h3>de Digital Scrapbook.</h3>
+        </nav>
+        
+    <!-- Contenido principal -->
         <?php
-        if ($user->getEdad() < 18) {
-            echo '<p>Por ser menor de edad, esta página se encuentra restringida.</p>';
-        } else {
-            echo '<p>Qué es un método a través del cual se plasman recuerdos, emociones o acontecimientos importantes. Se utilizan fotografías y se decoran con ayuda de papeles estampados, cintas, cartulinas, washi tape, sellos y todo tipo de adornos. La traducción literal del término "Scrapbook" significa "libro de recortes", aunque también puede tomar la forma de un álbum, una tarjeta o una lámina.</p>';
-        }
+            // Realizar la conexión a la base de datos (usando el archivo db.php)
+
+            $page = new DB();
+            $conexion = $page->connect();
+            $consulta = "SELECT `id`, `pagina`, `titulo`, `titulo2`, `warning`, `directorio1`, `directorio2`, `directorio3`, `directorio4`, `contenido1`, `contenido2`, `contenido3`, `contenido4`, `contenido5`, `contenido6` FROM `info_pagina` WHERE `pagina` = 'home.php'";
+            $resultado = $conexion->query($consulta);
+            
+            if (!$resultado) {
+                echo '<div class="alert alert-danger" role="alert">
+                        Error al obtener los datos de la página
+                      </div>';
+            }
+            
+            if ($resultado->rowCount() > 0) {
+                $fila = $resultado->fetch(PDO::FETCH_ASSOC);
+                $pagina = $fila['pagina'];
+                $titulo1 = $fila['titulo'];
+                $titulo2 = $fila['titulo2'];
+                $warning = $fila['warning'];
+                $directorio1 = $fila['directorio1'];
+                $directorio2 = $fila['directorio2'];
+                $contenido1 = $fila['contenido1'];
+                $contenido2 = $fila['contenido2'];
+                $contenido3 = $fila['contenido3'];
+                $contenido4 = $fila['contenido4'];
+                $contenido5 = $fila['contenido4'];
+            }
         ?>
-    </main>
-               
+
+
+        <main class="section1" style="text-align: center;">
+            <?php
+              echo '<h1>' . $user->getNombre() .  $titulo1 . '</h1>'  ;
+              echo $titulo2;
+            
+            if ($user->getEdad() < 18) {
+                echo $warning;
+            } else {
+                echo $contenido1;
+            }
+            ?>
+        </main>
             
         <!-- Imágenes 2 circulares y redondeadas -->
         <div style="text-align: center;">
             <?php
             if ($user->getEdad() > 18) {
-                $directorio = "./media/*.jpg";
-                $imagenes = glob($directorio);
+                $imagenes = glob( $directorio1);
                 $totalImagenes = count($imagenes);
                 foreach ($imagenes as $indice => $imagen) {
                     $clase = ($indice === 0 || $indice === $totalImagenes - 1) ? 'rounded-circle' : 'rounded';
@@ -77,9 +106,9 @@
         <section class="mt-4" style="text-align: center;">
             <?php
                 if ($user->getEdad() > 18) {
-                    echo '<h2>Teams Creativos</h2>';
-                    echo '<h4>He participado en varios Team Creativos, </h4>';
-                    echo '<h5>Con Dunia Designs, Designed by Soco y Rachel Etrog</h5>';
+                    echo $contenido2;
+                    echo $contenido3;
+                    echo $contenido4;
                 }
             ?>
         </section>
@@ -91,11 +120,9 @@
                 // carousel de Bootstrap
                 if ($user->getInteres()) {
                     if ($user->getEdad()> 18) {
-                        echo '<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">';
+                        echo $contenido5;
                             echo '<div class="carousel-inner">';
-                            
-                                $directorio = "./Slides/*.jpg";
-                                $images = glob($directorio);
+                                $images = glob($directorio2);
 
                                 foreach ($images as $index => $image) {
                                     $activeClass = ($index == 0) ? 'active' : ''; // Agrega la clase 'active' a la primera imagen
